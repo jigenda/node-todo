@@ -36,7 +36,7 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
 //     });
 
 client.db(dbName).collection('Users').findOneAndUpdate({
-    name: 'Josh'
+    _id: new ObjectID('5af003dbdc3c506e5c0bcc16')
 },{
     $set: {
         name: 'Jing'
