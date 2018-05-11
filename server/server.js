@@ -38,13 +38,13 @@ app.get('/todos/:id', (req,res) => {
        return  res.status(404).send();
     }
 
-    Todo.findById(id).exec().then((todo) => {
+    Todo.findById(id).then((todo) => {
         if(!todo){
             res.status(404).send();
         }
         res.send({todo});
     }, (e) => {
-        res.status(400).send(e);
+        res.status(404).send(e);
     });
 });
 
@@ -56,7 +56,7 @@ app.delete('/todos/:id', (req,res) => {
 
     Todo.findByIdAndRemove(id).then((todo) => {
         if(!todo){
-           return res.send(404).send();
+           return res.status(404).send();
         }
         res.send({todo});
     }, (e) => {
